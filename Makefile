@@ -1,13 +1,12 @@
 all: dist/bioinformer.zip
 
-dist/bioinformer.zip: lib/gnujaxp.jar lib/jcommon-1.0.0-rc1.jar lib/jfreechart-1.0.0-rc1.jar lib/junit.jar lib/licence-LGPL.txt lib/maths.jar lib/sequencetools.jar lib/servlet.jar src res
+dist/bioinformer.zip: lib/gnujaxp.jar lib/jcommon-1.0.0-rc1.jar lib/jfreechart-1.0.0-rc1.jar lib/junit.jar lib/licence-LGPL.txt lib/maths.jar lib/sequencetools.jar lib/servlet.jar src/haubold/*/*.java src/haubold/*/*/*.java src/haubold/*/*/*/*.java res
 	ant
 	mkdir -p bioinformer
 	mv dist/bioinformer.jar bioinformer
 	cp -r lib bioinformer
 	zip -r bioinformer.zip bioinformer
 	mv bioinformer.zip dist
-	rm -r bioinformer
 lib/gnujaxp.jar:
 	wget https://owncloud.gwdg.de/index.php/s/B9uuasvkrn3THkd/download -O lib/gnujaxp.jar
 lib/jcommon-1.0.0-rc1.jar:
