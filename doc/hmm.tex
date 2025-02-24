@@ -1,0 +1,96 @@
+\section{Background}
+Hidden Markov models are probabilistic models of sequential data. Such
+sequential data could be a stream of phonemes uttered by a speaker or
+a stretch of nucleotides. In the case of nucleotides we might be
+interested in inferring the position of genes along the sequence. Say we knew that
+protein coding regions
+were G/C-rich compared to non-coding regions. Then we could model our
+stretch of DNA by postulating two hidden states corresponding to
+\textit{coding} \& \textit{non-coding}. These two states emit nucleotides with
+different probabilities. Moreover, given that the system is in the
+coding state, it changes into the non-coding state with some
+probability and vice versa. The set of transition probabilities between the
+hidden states and emission probabilities attached to each of the hidden states is
+called the hidden Markov model.
+
+Given such a model and an unannotated stretch of sequence, we
+can try to guess locations of coding and non-coding regions. If, on
+the other hand, we do not known the probability parameters
+of the model, we can try to infer the model from some ``training''
+data using an arbitrary model as our starting point. A thorough
+introduction to the algorithms used to solve these problems is
+provided in \cite{rab89:mar}. The application of hidden Markov models
+in sequence analysis is covered in \cite{dur98:bio}.
+
+\section{Description of Program}
+The program allows the user to manipulate the probabilities of a hidden Markov model of a DNA
+molecule. The model consists of two hidden states and two observable
+states given simulated DNA sequence data. The observable states are A/T and G/C, while the hidden states
+are indicated solely by different colors. Given this model, the user can generate a DNA
+sequence with hidden states indicated by color coding. Conversely, 
+the program can guess the most likely sequence of hidden states given
+simulated DNA sequence data. The
+inferred hidden states can then be compared to the known states.
+
+In addition, the program can take a simulated DNA sequence and a
+random hidden Markov model as input and by an iterative procedure
+infer the most likely model. 
+
+\section{Tutorial}
+\begin{enumerate}
+  \I \ty{Detect Hidden States} Tab
+  \begin{enumerate}
+    \I The hidden Markov model on the left consists of a starting
+    point, which changes into one of the two hidden states
+    shown as colored panels with the probabilities indicated on the
+    transition arrows. The hidden states each contain a histogram with
+    two bars indicating the probabilities with which they emit either
+    an A/T or G/C. When emitting A/T, the model emits with equal
+    probability an A or a T, and similarly for G/C. Once the model is
+    in a certain hidden state it either stays in that state with the
+    probability noted next to the self-referential arrow or changes to
+    the other state with the probability noted next to the arrow
+    pointing to the alternative hidden state. All 10 probabilities
+    displayed on the model can be manipulated with the 5 sliders on the
+    right. Try out all five sliders and observe the effect.
+    \I Reset the model by clicking the reset button.
+    \I Generate a DNA sequence by clicking \ty{>}. This sequence appears in the panel on the left hand
+    side with
+    the hidden states marked by the same colors as they appear in the
+    model. 
+    \I Estimate the sequence of hidden states from the data by
+    clicking \ty{?}. The DNA
+    sequence with the estimated annotations appears in the panel on
+    the bottom right hand side. Compare the known hidden states with
+    those estimated from the data.
+  \end{enumerate}
+  \I \ty{Estimate HMM} Tab 
+  \begin{enumerate}
+    \I There are three hidden Markov models displayed here; from left
+    to right they indicate:
+    \begin{itemize}
+      \I The model generated in the \ty{Detect Hidden States} tab.
+      \I A random initial model.
+      \I The model yet to be estimated. This model is initialized to
+      the same values as the random model on its left.
+    \end{itemize}
+    \I Generate a new DNA sequence by pressing \ty{>}. This
+    sequence is generated according to the model displayed on the
+    left.
+    \I Estimate a new model by pressing \ty{?}. The ensuing
+    computations may take some time.
+    \I Compare the estimated model to the random and the true
+    models. Did you get a good fit? 
+    \I Generate a new random model by clicking the die and repeat the model
+    estimation. You will find that model estimation depends to some
+    extent on the initial model. The reason for this is that the
+    estimation algorithm also known as Baum-Welch algorithm can easily
+    converge on a local optimum rather than the global optimum, which
+    should be very similar to the true model.
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+

@@ -1,0 +1,62 @@
+\documentclass{book}
+\input{header}
+\begin{document}
+
+\frontmatter
+\begin{titlepage}
+\begin{center}
+\begin{boxedminipage}[c]{12cm}
+\includegraphics{t11.1}\\
+\begin{pspicture}(0,0)(12,1)
+  \rput*(6.1,0.4){\scalebox{4.5}{\texttt{\textbf{bioinformer}}}}
+\end{pspicture}
+\begin{center}
+\textsf{\input{date.txt}\!\!, \input{version.txt}}
+\vspace{0.2cm}
+  \scalebox{2.0}{\textsf{Software for Teaching Bioinformatics}}\\
+  \textsf{Written by}\\
+  \scalebox{1.5}{\textsf{Bernhard Haubold}}\\
+  \scalebox{1}{\textsf{\textit{Max-Planck-Institute for Evolutionary Biology}}}
+\end{center}
+\end{boxedminipage}
+\end{center}
+\end{titlepage}
+\tableofcontents
+\chapter{Preface}
+\input{preface}
+
+\mainmatter
+\part{Match}
+\chapter{String Matching}
+\input{stringMatching}
+\chapter{Suffix Tree}
+\input{suffixTree}
+\chapter{Repeat Searching}
+\input{repeat}
+\chapter{Hash Table}
+\input{hashTable}
+\chapter{Dot Plot}
+\input{dotPlot}
+
+\part{Alignment}
+\chapter{Protein Substitution Matrices}
+\input{substitutionMatrices}
+\chapter{Number of Alignments}
+\input{numAlignments}
+\chapter{Pairwise Alignment}
+\input{alignment}
+
+\part{Evolution}
+\chapter{Coalescent}
+\input{coalescent}
+\chapter{Phylogeny}
+\input{phylogeny}
+
+\part{HMM}
+\chapter{Hidden Markov Model}
+\input{hmm}
+
+\backmatter
+\bibliography{ref}
+\end{document}
+

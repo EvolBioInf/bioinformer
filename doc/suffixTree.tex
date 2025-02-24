@@ -1,0 +1,65 @@
+\section{Background}
+Molecular Biologists often want to find sequence patterns in molecular
+genetic data. Consider for example the text
+$T=\mathtt{ACCGTC}$ and the pattern $P=\mathtt{C}$. A string search
+should tell us as efficiently as possible that $P$ occurs in $T$ at
+positions 2, 3, and 6. Classical results in computer science have lead
+to algorithms that achieve this in time proportional to the length of $T$.
+
+Suffix trees are an ideal data structure for improving on this result in cases
+where the text is stable and needs to be searched repeatedly. Suffix
+trees are an index structure of the text, which can be built in linear
+time \cite{ukk95:alg}. Once built, the text can be searched for
+a pattern in time 
+proportional to the length of the pattern rather than in time
+proportional to the length of the text \cite{gus97:alg}. This is
+perhaps not quite as magic as it might initially sound. Consider a
+dictionary of the English language such as the wonderful \textit{Oxford English 
+  Dictionary}.  Due to its alphabetical structure the
+time it takes to find a word in such a large work is relatively independent of its
+size. The situation is very different when looking
+for, say, \textit{Napoleon} in an unannotated copy of \textit{War and Peace}.
+
+\section{Description of Program}
+The program draws a suffix tree for any input string. On this suffix
+tree it optionally displays four features:
+\begin{enumerate}
+  \I The leaf labels, which are the starting positions of the suffices
+  constructed by concatenating edge labels from the root of the tree
+  to the respective leaf. A suffix of text $T=\mathtt{ACCGTC}$ starts
+  somewhere inside $T$ and ends at its end, for example the suffix
+  $\mathtt{GTC}$ starts at position 4.
+  \I The edge labels, which return one of the text's suffices when read
+  from the root to a leaf.
+  \I The string depth, which indicate the length of the string
+  stretching from the root to the node.
+  \I The suffix links, which make it possible for a suffix tree to be
+  constructed in linear time \cite{ukk95:alg,gus97:alg}.
+\end{enumerate}
+
+\section{Tutorial}
+\begin{itemize}
+  \I Enter a single letter and construct the corresponding suffix
+  tree. Notice that the program always adds the sentinel character
+  $\mathtt{\$}$ to
+  a string before processing it.
+  \I Add a second letter to the input string that is different to the
+  first letter and construct the suffix tree.
+  \I Continue adding different letters. Notice that the program is case sensitive.
+  \I Add a repeated letter and observe the effect on the tree
+  topology.
+  \I Construct a suffix tree from a string with lots of
+  repetitions. Search it for a pattern by matching from the root. If
+  the pattern is found in the tree, its start positions in the text are given by the leaves in
+  the subtree marked by the end of the match.
+  \I Notice that the string read from the root to any internal node
+  corresponds to a repeated string in the input sequence. The length
+  of this string is indicated by the \textit{string depth}. Look for the longest
+  repeat in the input string.
+\end{itemize}
+
+
+
+
+
+

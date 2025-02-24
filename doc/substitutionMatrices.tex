@@ -1,0 +1,113 @@
+\section{Background}
+Pairs of residues in DNA alignments are traditionally scored by
+distinguishing only between matches and mismatches. This works
+reasonably well for DNA sequences but is not applicable to
+proteins. For a start, the number of mutational steps needed to
+convert a codon for one amino acid into that for another varies
+between one and three. In addition, amino acids differ markedly in their
+physico-chemical properties. As a result, amino acid substitutions
+have highly variable effects on the structure of the protein
+affected. Since most changes in a protein's structure are deleterious,
+selection will filter out 
+substitutions with drastic structural effects. Substitution matrices
+summarize the $21\times20/2 = 210$
+log-likelihoods of observing a homologous pair of amino acids. 
+Finally, substitution probabilities change over time,
+making it necessary to construct series of substitution
+matrices to cover a range of evolutionary time scales. The first such
+series that is still widely used today is known as the PAM
+series and was developed in the 1970's by Margaret Dayhoff and coworkers
+\cite{day78:mod}. PAM stands for \textbf{p}ercent \textbf{a}ccepted
+\textbf{m}utations and hence a given PAM$n$
+matrix is applicable to pairs of sequences with an expected evolutionary
+distance of $n$ mutations per 100 residues.
+
+A more recent series of protein substitution matrices is based on 
+blocks of aligned protein sequences and hence known as \textbf{BLO}cks
+\textbf{SU}bstitution \textbf{M}atrices or BLOSUM
+\cite{hen92:ami}. In contrast PAM matrices, which are based on
+extrapolating from a single set of observed substitution
+probabilities, BLOSUM matrices are each constructed directly from
+aligned sequence data. In order to construct a BLOSUMx matrix,
+sequences that are $\ge x\%$ similar are clustered and given equal
+weight in the computations. Notice that increasing PAM numbers imply
+increasing evolutionary distances while the converse is true for
+BLOSUM matrices. Table \ref{tab:pam} shows corresponding BLOSUM and
+PAM matrices. 
+\begin{table}
+\begin{center}
+\begin{tabular}{cc}
+\hline\hline
+PAM & BLOSUM\\
+\hline
+PAM 120 & BLOSUM 80\\
+PAM 160 & BLOSUM 62\\
+PAM 250 & BLOSUM 45\\
+\hline\hline
+\end{tabular}
+\end{center}
+\caption{Corresponding substitution matrices from the PAM and BLOSUM series.}\label{tab:pam}
+\end{table}
+
+\section{Description of Program}
+The program displays the PAM and BLOSUM matrices. On the \textbf{PAM
+  tab} PAM matrices are
+provided for evolutionary distances ranging
+from 2 PAM to 500 PAM. The user can select the PAM
+number through a slider. The entries of PAM matrices are expressed in bits and by
+convention different bit fractions have been used to scale the
+majority of matrix entries to single digit integers. The user can therefore choose
+from a range of such scale factors. In addition, the program displays
+the expected percentage of mismatched residues between proteins
+separated by an evolutionary distance of a given PAM.
+The implemented calculations are based on the original data
+\cite{day78:mod} and hence the matrices may slightly diverge in
+numerical detail from the versions currently available, e.g. as part
+of the \ty{BLAST} distribution \cite{alt97:gap}.
+
+On the \textbf{BLOSUM tab} three commonly used BLOSUM matrices can be
+displayed: BLOSUM 45, 62, and 80.
+
+
+\section{Tutorial}
+\begin{enumerate}
+  \I Look at the PAM matrix displayed when the program is first
+  launched and notice that the values along
+  the main diagonal, which represent match scores, are all
+  positive. This contrasts with the off-diagonal entries, which
+  represent mismatch scores. These are on
+  average negative. Identify the two amino acids with the highest entries on
+  the main diagonal, i.e. the two most conserved amino
+  acids. Can you make biological sense of their high degree of conservation?
+  \I Slide the PAM number to small values. Notice that the
+  \%-difference is now equal to the PAM number. This is because, say,
+  2 Mutations per 100 amino acids will on average have caused a 2\%
+  difference in the corresponding pairwise comparison.
+  \I Slide the PAM number to very high values. Notice three things:
+  \begin{enumerate}
+    \I The PAM number now vastly exceeds the \%-difference. This is
+    because mutations can hit a given position more than once and this 
+    occurs with increasing frequency the more mutations are thrown
+    randomly at a segment of 100 amino acids. At a more basic level,
+    percentages vary between 0 and 100, while the number of mutations
+    per 100 residues (PAM$n$) 
+    can range between 0 and infinity.
+    \I The entries in the matrix tend towards zero. The reason for
+    this is that the probability of finding the corresponding pair of
+    residues due
+    to homology becomes over long evolutionary time equal to the
+    probability of finding the pair by chance. The ratio of two equal
+    numbers is 1 and $\log{1} = 0$.
+    \I A few amino acids retain high entries on the main diagonal even
+    for high PAM entries. Identify the two amino acids with the
+    highest entries.
+  \end{enumerate}
+  \I Compare the entries between PAM160 and BLOSUM62 for amino acid
+  pairs histidine/alanine, valine/valine, and
+  tryptophan/tryptophan. Do you notice any differences? 
+\end{enumerate}
+
+
+
+
+

@@ -1,0 +1,51 @@
+#!/usr/bin/perl -w
+use strict;
+use Getopt::Std;
+use vars qw($opt_m);
+my $file;
+
+if($#ARGV < 0){
+    print "usage: formatHelp [-m] fileName(s)\n\t -m  format manual only\n";
+    exit;
+}
+getopts('m');
+if(!$opt_m){
+    latex2html();
+}
+
+
+#chdir "./Manual";
+#system("latex bioinformerManual; bibtex bioinformerManual");
+#system("latex bioinformerManual; latex bioinformerManual");
+#system("dvipdf bioinformerManual");
+#$file="bioinformerManual";
+#system("rm $file.toc $file.aux $file.log $file.bbl $file.blg $file.dvi");
+
+sub latex2html{
+    while($file = shift @ARGV){
+	# Remove extension
+	$file =~ s/\..*//;
+	# TeX the file (including bibtex)
+	system("latex $file; bibtex $file; latex $file; latex $file");
+	# Convert to HTML
+	system("latex2html \\
+	-noinfo \\
+	-no_math \\
+	-html_version 4.0,math \\
+	-local_icons \\
+	-image_type gif                       \\
+	-accent_images textrm \\
+	-scalable_fonts \\
+	-short_index \\
+	-split 4 \\
+	-link 3 \\
+	-toc_depth 6 \\
+	-t Documentation \\
+        -noaddress  \\
+	-style documentationStyle.css \\
+	$file;");
+	system("cp StyleSheets/documentationStyle.css $file");
+	# Clean up
+	system("rm $file.aux $file.log $file.bbl $file.blg $file.dvi");
+    }
+}

@@ -1,0 +1,58 @@
+\section{Background}
+At its most basic, string matching consists of looking for a short
+pattern in a large text. This is a classical topic of computer science
+\cite{gus97:alg}. However, string matching
+methods are ubiquitous in bioinformatics, since a core concern of the
+field is the interpretation of genetic sequence texts
+\cite{gus97:alg}. 
+
+\section{Description of Program}
+The program implements three methods of string matching:
+\begin{enumerate}
+  \I \textbf{Naive string matching}, which essentially consists of two nested
+  \ty{do} loops, the outer running over the text, the inner over the
+  pattern. Accordingly, the worst case run time of this algorithm is $O(n\times
+  m)$, where $m$ and $n$ are the lengths of the text and the pattern,
+  respectively. 
+  \I The \textbf{Z-Algorithm} is thought to be the simples string
+  matching algorithm that runs in time linear in the length of the
+  text \cite{gus97:alg}.
+  \I A \textbf{suffix tree} is a data structure for indexing a
+  text. Once this data structure is built, it has the astonishing
+  property that a text can be searched in time
+  proportional to the length of the pattern. Building the suffix tree
+  itself only 
+  takes time proportional to the length 
+  of the text, but the factor of
+  proportionality is rather large \cite{ukk95:alg,gus97:alg}.
+\end{enumerate}
+To demonstrate the time requirements of the three algorithms the
+program displays the time taken for searching and --- with the exception
+of the naive algorithm, which lacks preprocessing --- the time taken for
+preprocessing. The text window can be freely edited. In addition,
+three chunks of 
+interesting prose are provided:
+\begin{enumerate}
+  \I The sequence of the first genome to be sequenced, that of the
+  bacteriophage $\Phi$-X174, which encodes 10
+  proteins in 5386 nucleotides \cite{air78:nuc}.
+  \I The alcohol dehydrogenase (\textit{Adh}) region of
+  \textit{Drosophila melanogaster}. In 1983 this was the first gene to
+  be subjected to comparative sequencing \cite{kre83:nuc}. 
+  \I The text of the paper by Watson \& Crick announcing the
+  double helical structure of DNA \cite{wat53:mol}.
+\end{enumerate}
+
+\section{Tutorial}
+\begin{itemize}
+  \I Choose the \ty{Naive} algorithm in conjunction with the genome of
+  $\Phi$-X174 and 
+  run the pattern search for all three algorithms provided. Observe in
+  particular the dramatic variations in preprocessing time.
+\end{itemize}
+
+
+
+
+
+

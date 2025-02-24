@@ -1,0 +1,79 @@
+\section{Background}
+Traditional methods for simulating the evolution of a population run
+forward in time. In its simplest form such a simulation starts by
+creating a population and then transferring it from one generation
+to another while implementing the evolutionary scenario under
+investigation. Such a scheme has a number of potential problems, including the fact
+that a sample drawn at at a certain point in time is not independent
+from a sample drawn some time later. Moreover, the representation of
+whole populations in the computer is time and memory consuming. 
+
+It is
+also unnecessary. In a revolutionary inversion of the perspective on the
+evolution of populations, statistical geneticists realized from the
+early 1980's onwards  that instead of
+simulating populations forward in 
+time it is much more efficient to trace the genealogy of samples
+backward in time until their most common ancestor is found \cite{kin82:coa,kin82:gen,hud90:gen}. Under this
+scheme samples are independent and can be constructed in time
+proportional to the sample size rather than the usually much bigger
+population size.
+
+When going backward in time, lineages \textit{coalesce} at the point
+where they diverged from their last common ancestor. Hence the tree
+structure tracing back the genealogy to the most recent common
+ancestor of an entire population is called the \textit{coalescent} and
+the associated theory is referred to as \textit{coalescent theory}
+\cite{hud90:gen,nor01:coa}. 
+
+Notice the difference between the coalescent and a phylogeny. The
+latter is reconstructed from empirical data, while the former is a tool for
+simulating genetic data.
+
+\section{Description of Program}
+The program's toolbar allows the manipulation of the sample size and
+of the population parameter theta ($\theta$). This is the scaled
+mutation rate
+\[
+\theta = 2N\mu,
+\]
+where $N$ is the size of a haploid population and $\mu$ the mutation rate. This
+parameter has a simple relationship to the expected number of segregating
+sites, $S$,
+found in a sample of DNA sequences \cite{wat75:num}:
+\begin{equation}\label{eq:s}
+S = \theta\sum_{i=1}^{n-1}\frac{1}{i},
+\end{equation}
+where $n$ is the sample size. Notice that for a sample of two
+sequences the number of segregating sites, also known as single
+nucleotide polymorphisms, SNPs, is equal to $\theta$. The program
+demonstrates the creation of sequence samples with mutations.
+
+\section{Tutorial}
+\begin{enumerate}
+  \I Click on \texttt{>>} to generate a genealogy. Notice the time
+  scale measured in units of $2N$ generations.
+  \I Click on \texttt{>>} to throw mutations  onto the
+  genealogy. The mutations are displayed as red squares and their average number is given by equation
+  (\ref{eq:s}).
+  \I Click on \texttt{>>} to generate the haplotypes, or sequences,
+  that correspond to the displayed genealogy with mutations. The
+  sequences are stylized as labeled black lines with the positions of
+  the 
+  mutations indicated as before by red squares. Each mutation on the
+  genealogy corresponds to a segregating site, i.e. a polymorphic
+  column of haplotype positions. Notice that mutations affect all the
+  sequences that are located below it in 
+  the genealogy. Conversely, mutations on the outer branches of the
+  genalogy only appear in a single sequence. These are also
+  known as singulets and on average they make up $1/\sum_{i=1}^{n-1}1/i$
+  of all the mutations \cite{nor01:coa}
+  \I Click the gearwheel to animate the display of random
+  genealogies. Notice that you can regulate the speed of animation
+  using the \ty{Step Time} slider.
+\end{enumerate}
+
+
+
+
+

@@ -1,0 +1,79 @@
+\section{Background}
+The human interest in reconstructing the ancestry of powerful families
+is at least as old as the oldest literary documents. For example, 
+\textit{Genesis} 5 lists the descendants of Adam down to Noah and 
+\textit{Genesis} 10 recounts the descendants of Noah's three sons, who go
+on to populate the earth. The preceding description of creation
+(\textit{Genesis} 1) is remarkably free of such genealogical thinking.
+However, at its most basic level a phylogeny is simply the generalization
+of a family tree. 
+
+Phylogenies in the modern sense are as old as Darwin's theory of
+evolution (1859), while some of the first algorithms for phylogeny
+reconstruction were devised by Edwards \& Cavalli-Sforza
+\cite{edw64:rec}. The idea of testing the robustness of a phylogeny
+using the bootstrap \cite{efr79:boo} was introduced by Felsenstein in
+1985 \cite{fel85:con}. The large field of phylogenetics is surveyed in
+\cite{swo96:phy,pag98:mol,fel04:inf}. 
+
+
+\section{Description of Program}
+The program takes as input a set of aligned sequences in FASTA
+format and seven primate mitochondrial DNA sequences are provided as
+default input. The program computes the pairwise distances between
+these sequences. Users can choose between three different distance
+measures:
+\begin{enumerate}
+  \I The number of mismatches
+  \I The number of mismatches normalized by division by the length of the alignment 
+  \I The Jukes-Cantor distance \cite{juk69:evo}
+\end{enumerate}
+
+A simple phylogenetic tree is reconstructed from these distances using the
+ UPGMA (unweighted pair group method with arithmetic means)
+method \cite{sok63:pri}. In addition, the program demonstrates the
+ application of the 
+bootstrap in phylogeny reconstruction.
+
+\section{Tutorial}
+\begin{enumerate}
+  \I \ty{Distance Matrix} Tab
+  \begin{enumerate}
+    \I Compute the pairwise number of mismatches between the displayed
+    sequences. 
+    \I Count the number of mismatches between the human \& chimp
+    sequences and compare your result with the corresponding entry in
+    the distance matrix.
+    \I Compute the normalized number of mismatches and note down the
+    distance between human and gibbon.
+    \I Compute the Jukes-Cantor distance. Compare the Jukes-Cantor
+    distance between human and gibbon with the normalized number of
+    mismatches for this pair of taxa.
+  \end{enumerate}
+  \I \ty{Phylogeny} Tab
+  \begin{enumerate}
+    \I Compute the phylogeny from the distance data.
+    \I Display the brach lengths on the tree.
+    \I Compare the branch lengths with the distances in the distance
+    matrix. 
+  \end{enumerate}
+  \I \ty{Bootstrap} Tab
+  \begin{enumerate}
+    \I Generate a bootstrap sample from the original data. This is
+    done by sampling with replacement columns from the original
+    alignment.
+    \I Compute the distance matrix for the bootstrap data.
+    \I Generate the phylogenetic tree for the new distance matrix. Is
+    the tree topology the same as for the original data set?
+    \I Repeat the process of bootstrapping and observe the range of
+    tree topologies generated.
+    \I Click the cogwheel to animate the generation of bootstrapped
+    trees. Notice that you can vary the animation speedy using the
+    \ty{Step Time} slider. 
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+

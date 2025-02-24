@@ -1,0 +1,73 @@
+\section{Background}
+A dot plot is a simple means of comparing two strings. Consider for
+example the following string in jest ascribed to Napoleon I (1769--1821):
+\begin{center}
+  \ty{ABLEWASIEREISAWELBA}
+\end{center}
+If we compare this string to itself and make a dot every time we find
+a matching character, we obtain the graphic shown in Figure
+\ref{fig:dot}.
+
+\begin{figure}
+\begin{center}\resizebox{\textwidth}{!}{\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}\hline
+&\color{red}A &\color{red}B &\color{red}L &\color{red}E &\color{red}W &\color{red}A &\color{red}S &\color{red}I &\color{red}E &\color{red}R &\color{red}E &\color{red}I &\color{red}S &\color{red}A &\color{red}W &\color{red}E &\color{red}L &\color{red}B &\color{red}A\\ \hline\hline
+\color{red}A &\color{blue} $\bullet$ & & & & &\color{blue} $\bullet$ & & & & & & & &\color{blue} $\bullet$ & & & & &\color{blue}$\bullet$ \\\hline
+\color{red}B & &\color{blue} $\bullet$ & & & & & & & & & & & & & & & &\color{blue} $\bullet$ & \\\hline
+\color{red}L & & &\color{blue} $\bullet$ & & & & & & & & & & & & & &\color{blue} $\bullet$ & & \\\hline
+\color{red}E & & & &\color{blue} $\bullet$ & & & & &\color{blue} $\bullet$ & &\color{blue} $\bullet$ & & & & &\color{blue} $\bullet$ & & & \\\hline
+\color{red}W & & & & &\color{blue} $\bullet$ & & & & & & & & & &\color{blue} $\bullet$ & & & & \\\hline
+\color{red}A &\color{blue} $\bullet$ & & & & &\color{blue} $\bullet$ & & & & & & & &\color{blue} $\bullet$ & & & & &\color{blue}$\bullet$ \\\hline
+\color{red}S & & & & & & &\color{blue} $\bullet$ & & & & & &\color{blue} $\bullet$ & & & & & & \\\hline
+\color{red}I & & & & & & & &\color{blue} $\bullet$ & & & &\color{blue} $\bullet$ & & & & & & & \\\hline
+\color{red}E & & & &\color{blue} $\bullet$ & & & & &\color{blue} $\bullet$ & &\color{blue} $\bullet$ & & & & &\color{blue} $\bullet$ & & & \\\hline
+\color{red}R & & & & & & & & & &\color{blue} $\bullet$ & & & & & & & & & \\\hline
+\color{red}E & & & &\color{blue} $\bullet$ & & & & &\color{blue} $\bullet$ & &\color{blue} $\bullet$ & & & & &\color{blue} $\bullet$ & & & \\\hline
+\color{red}I & & & & & & & &\color{blue} $\bullet$ & & & &\color{blue} $\bullet$ & & & & & & & \\\hline
+\color{red}S & & & & & & &\color{blue} $\bullet$ & & & & & &\color{blue} $\bullet$ & & & & & & \\\hline
+\color{red}A &\color{blue} $\bullet$ & & & & &\color{blue} $\bullet$ & & & & & & & &\color{blue} $\bullet$ & & & & &\color{blue}$\bullet$ \\\hline
+\color{red}W & & & & &\color{blue} $\bullet$ & & & & & & & & & &\color{blue} $\bullet$ & & & & \\\hline
+\color{red}E & & & &\color{blue} $\bullet$ & & & & &\color{blue} $\bullet$ & &\color{blue} $\bullet$ & & & & &\color{blue} $\bullet$ & & & \\\hline
+\color{red}L & & &\color{blue} $\bullet$ & & & & & & & & & & & & & &\color{blue} $\bullet$ & & \\\hline
+\color{red}B & &\color{blue} $\bullet$ & & & & & & & & & & & & & & & &\color{blue} $\bullet$ & \\\hline
+\color{red}A &\color{blue} $\bullet$ & & & & &\color{blue} $\bullet$ & & & & & & & &\color{blue} $\bullet$ & & & & &\color{blue}$\bullet$ \\\hline
+\end{tabular}}\end{center}
+  \caption{Dot plot of the string \ty{ABLEWASIEREISAWELBA} compared to
+  itself.}
+  \label{fig:dot}
+\end{figure}
+
+Notice that the main diagonal running from the top left corner to the
+bottom right corner is filled with dots because the string is compared
+to itself. In addition, the counter diagonal is also filled with dots,
+because the string is a palindrome.
+
+A simple generalization of the kind of dot plot shown in Figure
+\ref{fig:dot} is achieved by plotting matches of some length $\ge 1$
+and this approach has been used to compare sequences on a genomic
+scale \cite{son96:dna}.
+
+\section{Description of Program}
+The program takes two sequences as input and displays matches of a
+certain length. The user can enter new input sequences and vary the
+length of the matches displayed. In addition, the user can randomize
+the input sequences to observe the length of matches between random
+sequences.
+
+\section{Tutorial}
+\begin{enumerate}
+  \I Click \ty{>} to draw a dot plot of the two alcohol dehydrogenase sequences
+  supplied by the program using a \ty{Match Length} of 11.  
+  \I Observe the matches,
+  indicated as black lines, along the diagonal.  
+  \I Notice the gap in
+  the matches, which is caused by the insertion of the copia
+  transposon in Sequence 1 at that position (c.f. header line of Sequence 1).
+  \I Randomize the two sequences by clicking the die and redraw the dot plot. 
+  \I Vary the \ty{Match Length} to find the longest match between the
+  two randomized sequences.
+\end{enumerate}
+
+
+
+
+

@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: haubold.birkdesktop.BirkDesktop
+Class-Path: lib/jcommon-1.0.0-rc1.jar lib/servlet.jar lib/maths.jar lib/sequencetools.jar lib/jfreechart-1.0.0-rc1.jar lib/gnujaxp.jar lib/junit.jar

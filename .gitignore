@@ -1,0 +1,13 @@
+build
+dist
+doc/*.aux
+doc/*.bbl
+doc/*.blg
+doc/*.dvi
+doc/*.log
+doc/*.pdf
+doc/*.ps
+doc/*.toc
+doc/date.txt
+doc/version.txt
+lib/*.jar

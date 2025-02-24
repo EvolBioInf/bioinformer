@@ -1,0 +1,50 @@
+<project name="Bioinformer" default="dist" basedir=".">
+  <description>
+    Build file for the Bioinformer program
+  </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="dist" location="dist"/>
+  <property name="lib" location="lib"/>
+  <property name="jar" location="${dist}"/>
+
+  <!-- Set the classpath-->	
+  <path id="build.classpath">
+	  <fileset dir="${lib}">
+	      <include name="**/*.jar" />
+	  </fileset>
+  </path>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source">
+    <!-- Compile the Java code from ${src} into ${build} -->
+    <javac includeantruntime="false" srcdir="${src}" destdir="${build}" classpathref="build.classpath"/>
+  </target>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution">
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}"/>
+    <!-- Copy the resource files -->
+    <copy todir="${build}/haubold">
+      <fileset dir="res"/>
+    </copy>
+    <!-- Put everything in ${build} into the bioinformer.jar file -->
+    <jar jarfile="${jar}/bioinformer.jar" basedir="${build}" manifest="MANIFEST.MF"/>
+  </target>
+
+  <target name="clean"
+        description="clean up">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>

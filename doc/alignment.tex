@@ -1,0 +1,67 @@
+\section{Background}
+Similar sequences tend to encode similar functions. The search for
+sequence similarities is therefore the bread and butter of
+bioinformatics. This program is concerned with alignment by 
+dynamic programming, which was pioneered
+for global alignment by Needleman and Wunsch \cite{nee70:gen}. The local
+alignment algorithm is due to Smith and Waterman
+\cite{smi81:ide}.
+
+\section{Description of Program}
+This program visualizes the dynamic programming matrix used for
+computing optimal pairwise alignments between two sequences over an
+arbitrary alphabet. It also visualizes the path through the matrix
+that corresponds to an optimal alignment. In addition, it displays the
+alignment, its score, and calculates
+the number of co-optimal global alignments. Three alignment modes are
+implemented:
+\begin{enumerate}
+  \I Global: Sequences are assumed to be homologous over their entire
+  length.
+  \I Local: Sequences are assumed to possess only local homology.
+  \I Overlap: Sequences are assumed to have overlapping ends. This
+  approach is used for the assembly of genome sequences from
+  shotgun fragments \cite{gus97:alg}.
+\end{enumerate}
+
+The user can enter any sequence and manipulate the following
+parameters:
+\begin{enumerate}
+  \I Match score; case sensitive
+  \I Mismatch score; case sensitive
+  \I Gap extension
+\end{enumerate}
+
+Notice that most alignment algorithms implement an affine gap scoring
+scheme, i.e. the total gap cost, $g_{\rm t}$ is
+\[
+g_{\rm t} = g_{\rm o} + g_{\rm e}\times l,
+\]
+where $g_{\rm o}$ is the gap opening cost, $g_{\rm e}$ the gap
+extension cost, and $l$ the length of the gap. In this program the gap
+opening cost is ignored, i.e. set to zero.
+
+\section{Tutorial}
+\begin{enumerate}
+  \I Choose the global alignment algorithm.
+  \I Click on \texttt{>>} to set up the dynamic programming matrix
+  corresponding to the sequences entered.
+  \I Click again on \ty{>>} to initialize the dynamic programming
+  matrix.
+  \I Click on \ty{>>} to fill in the dynamic programming
+  matrix. Verify that the entry in cell $(\mathtt{A},\mathtt{A})$ has the expected
+  value. 
+  \I Click one final time on \ty{>>} to carry out the trace back. The
+  corresponding alignment and its score is shown below. In addition,
+  the number of co-optimal alignments is displayed. These are
+  alternative paths through the matrix carrying the same optimal
+  score. There is no algorithmic criterion for distinguishing between
+  these alternatives.
+  \I Repeat the above steps using the local alignment algorithm.
+  \I Repeat the above steps using the overlap alignment algorithm.
+\end{enumerate}
+
+
+
+
+

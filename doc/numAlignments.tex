@@ -1,0 +1,56 @@
+\section{Background}
+In contrast to life, an alignment can end in three different ways:
+\begin{enumerate}
+  \I \begin{tabular}{c}$\mathtt{n}$\\$\mathtt{-}$\end{tabular}
+  \I \begin{tabular}{c}$\mathtt{n}$\\$\mathtt{n}$\end{tabular}
+  \I \begin{tabular}{c}$\mathtt{-}$\\$\mathtt{n}$\end{tabular}
+\end{enumerate}
+
+where $\tt n$ indicates any residue. These three possibilities suggest
+the following recursion for the number of possible global alignments
+\cite{wat95:int}:
+\[
+f(n,k) = f(n-1,k)+f(n-1,k-1)+f(n,k-1),
+\]
+where $f(n,k)$ is the number of possible alignments between two
+strings of length $n$ and $k$. If we further define the boundary
+condition that there is a single alignment between a sequence of any
+length and a sequence of length zero, we are in a position to compute
+the number of possible global alignments by dynamic programming.
+
+The possible number of local alignments is the sum of the number of global
+alignments for all possible pairs of subsequences. A sequence of
+length $n$ contains $n-m+1$ subsequence of length $m$. Consider as an
+example two sequences of length two each. Nine pairs of subsequences
+can be formed between these. Four of the subsequence pairs have length (1,1), yielding three possible global
+alignments each; another four have length (2,1) or (1,2), yielding
+five possible global alignments each; one has length (2,2), yielding
+13 possible global alignments. The number of possible local alignments
+is therefore $12 + 20 + 13 = 45$.
+
+\section{Description of Program}
+The program uses dynamic programming to calculate the number of
+different global or local alignments that
+can be constructed for two sequences of lengths between 1 and 400. The
+user can choose the lengths of the two sequences as well as the
+alignment mode (global or local).
+
+\section{Tutorial}
+\begin{itemize}
+  \I Contemplate the number of global alignments that can be
+  formed between two sequences of lengths 339 and 320.
+  \I Compare that number to the number of molecules contained in a liter
+  of water: $3.3 \times 10^{25}$. How much water is needed to
+  accumulate the same number of water molecules as there are possible
+  alignments between two sequences of lengths 339 and 320?
+  \I Compute the time it would take to list all possible global
+  alignments between two sequences of length 320 given that the
+  calculation of a single alignment takes, say, $10^{-15}$ seconds.
+  \I Compute the time it would take to list all possible local
+  alignments for two sequences of length 320.
+\end{itemize}
+
+
+
+
+
