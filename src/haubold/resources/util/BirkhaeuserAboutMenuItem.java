@@ -28,7 +28,7 @@ public class BirkhaeuserAboutMenuItem extends JMenuItem {
   }
 
   class AboutItemListener implements ActionListener {
-    Dimension dim = new Dimension(340,587);
+    Dimension dim = new Dimension(400,700);
     public void actionPerformed(ActionEvent e) {
       aboutDialog.setSize(dim);
       aboutDialog.setLocationRelativeTo((Component)e.getSource());
